@@ -72,7 +72,11 @@ def load_questions():
 
 model, tokenizer = load_model()
 questions = load_questions()
-
+uploaded_file = st.file_uploader("Choose a file")
+if uploaded_file is not None:
+	# To read file as bytes:
+	bytes_data = uploaded_file.getvalue()
+	contract = bytes_data
 contract = contracts[0]
 
 st.header("Contract Understanding Atticus Dataset (CUAD) Demo")
@@ -82,14 +86,6 @@ st.write("Based on https://github.com/marshmellow77/cuad-demo")
 selected_question = st.selectbox('Choose one of the 41 queries from the CUAD dataset:', questions)
 question_set = [questions[0], selected_question]
 
-contract_type = st.radio("Select Contract", ("Sample Contract", "New Contract"))
-if contract_type == "Sample Contract":
-	sample_contract_num = st.slider("Select Sample Contract #")
-	contract = contracts[sample_contract_num]
-	with st.expander(f"Sample Contract #{sample_contract_num}"):
-		st.write(contract)
-else:
-	contract = st.text_area("Input New Contract", "", height=256)
 
 Run_Button = st.button("Run", key=None)
 if Run_Button == True and not len(contract)==0 and not len(question_set)==0:
