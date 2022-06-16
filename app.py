@@ -4,6 +4,7 @@ import json
 from predict import run_prediction
 import textract
 from io import StringIO
+import PyPDF2
 
 st.set_page_config(layout="wide")
 
@@ -78,12 +79,14 @@ if uploaded_file is not None:
 	if '.txt' in uploaded_file.name:
 		stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
 		contract = stringio.read()
-		st.write(contract)
 
 	elif '.doc' in uploaded_file.name or '.docx' in uploaded_file.name or '.pdf' in uploaded_file.name:
 		#contract = textract.process(uploaded_file.name)
-		stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
-		contract = stringio.read()
+		pdfReader = PyPDF2.PdfFileReader(uploaded_file)
+		contract = ""
+		for i in range(pdfReader.numPages):
+			pageObj = pdfReader.getPage(i)
+			contract += pageObj.extractText()
 		st.write(contract)
 	
 	else:
