@@ -81,6 +81,9 @@ if uploaded_file is not None:
 st.header("Contract Understanding Atticus Dataset (CUAD) Demo")
 st.write("Based on https://github.com/marshmellow77/cuad-demo")
 
+def display_func(option):
+	if "Document Name" in option:
+		return "Document Name"
 
 #selected_question = st.selectbox('Choose one of the 41 queries from the CUAD dataset:', questions)
 selected_question = st.multiselect('Choose one of the 41 queries from the CUAD dataset:', questions)
