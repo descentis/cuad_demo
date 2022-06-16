@@ -3,6 +3,7 @@ import streamlit as st
 import json
 from predict import run_prediction
 import textract
+from io import StringIO
 
 st.set_page_config(layout="wide")
 
