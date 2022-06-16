@@ -77,7 +77,7 @@ if uploaded_file is not None:
 	# To read file as bytes:
 	bytes_data = uploaded_file.getvalue()
 	contract = bytes_data
-contract = contracts[0]
+#contract = contracts[0]
 
 st.header("Contract Understanding Atticus Dataset (CUAD) Demo")
 st.write("Based on https://github.com/marshmellow77/cuad-demo")
