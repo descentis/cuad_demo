@@ -79,7 +79,10 @@ if uploaded_file is not None:
 			contract = f.read()
 
 	elif '.doc' in uploaded_file.name or '.docx' in uploaded_file.name or '.pdf' in uploaded_file.name:
-		contract = textract.process(uploaded_file.name)
+		#contract = textract.process(uploaded_file.name)
+		stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
+		contract = stringio.read()
+		st.write(contract)
 	
 	else:
 		print("not a right format")
