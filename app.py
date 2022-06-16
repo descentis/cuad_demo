@@ -74,7 +74,7 @@ def load_questions():
 
 model, tokenizer = load_model()
 questions = load_questions()
-uploaded_file = st.file_uploader("Choose a file")
+uploaded_file = st.file_uploader("Choose a file (Currenty accepts text and pdf file formats)")
 if uploaded_file is not None:
 	if '.txt' in uploaded_file.name:
 		stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
