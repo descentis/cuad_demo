@@ -11,8 +11,11 @@ st.set_page_config(layout="wide")
 model_list = ['akdeniz27/roberta-base-cuad',
 			  'akdeniz27/roberta-large-cuad',
 			  'akdeniz27/deberta-v2-xlarge-cuad']
+
+def side_disp(option):
+	return option.replace("akdeniz27", "CoreCLM")
 st.sidebar.header("Select CUAD Model")
-model_checkpoint = st.sidebar.radio("", model_list)
+model_checkpoint = st.sidebar.radio("", model_list, format_func=side_disp)
 
 if model_checkpoint == "akdeniz27/deberta-v2-xlarge-cuad": import sentencepiece
 # import sentencepiece
