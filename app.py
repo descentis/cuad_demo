@@ -12,6 +12,7 @@ st.set_page_config(layout="wide")
 # model_checkpoint = st.sidebar.radio("", model_list)
 
 #if model_checkpoint == "akdeniz27/deberta-v2-xlarge-cuad": import sentencepiece
+import sentencepiece
 model_checkpoint = "akdeniz27/deberta-v2-xlarge-cuad"
 
 st.sidebar.write("CUAD Dataset: https://huggingface.co/datasets/cuad")
