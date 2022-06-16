@@ -99,13 +99,14 @@ def display_func(option):
 	
 
 #selected_question = st.selectbox('Choose one of the 41 queries from the CUAD dataset:', questions)
-selected_question = st.multiselect('Choose one of the 41 queries from the CUAD dataset:', questions, format_func=display_func)
-question_set = [questions[0], selected_question]
+selected_questions = st.multiselect('Choose one of the 41 queries from the CUAD dataset:', questions, format_func=display_func)
+#question_set = [questions[0], selected_question]
 
 
 Run_Button = st.button("Run", key=None)
 if Run_Button == True and not len(contract)==0 and not len(question_set)==0:
-	predictions = run_prediction(question_set, contract, 'akdeniz27/roberta-base-cuad')
-	
-	for i, p in enumerate(predictions):
-		if i != 0: st.write(f"Question: {question_set[int(p)]}\n\nAnswer: {predictions[p]}\n\n")
+	for question in selected_questions:
+		predictions = run_prediction([questions[0], question], contract, 'akdeniz27/roberta-base-cuad')
+
+		for i, p in enumerate(predictions):
+			if i != 0: st.write(f"Question: {question_set[int(p)]}\n\nAnswer: {predictions[p]}\n\n")
