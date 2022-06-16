@@ -86,7 +86,7 @@ def display_func(option):
 		return "Document Name"
 
 #selected_question = st.selectbox('Choose one of the 41 queries from the CUAD dataset:', questions)
-selected_question = st.multiselect('Choose one of the 41 queries from the CUAD dataset:', questions)
+selected_question = st.multiselect('Choose one of the 41 queries from the CUAD dataset:', questions, format_func=display_func)
 question_set = [questions[0], selected_question]
 
 
