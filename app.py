@@ -70,17 +70,6 @@ def load_questions():
 	]
 	return questions
 
-@st.cache(allow_output_mutation=True)
-def load_contracts():
-	with open('test.json') as json_file:
-		data = json.load(json_file)
-
-	contracts = []
-	for i, q in enumerate(data['data']):
-		contract = ' '.join(data['data'][i]['paragraphs'][0]['context'].split())
-		contracts.append(contract)
-	return contracts
-
 model, tokenizer = load_model()
 questions = load_questions()
 contracts = load_contracts()
