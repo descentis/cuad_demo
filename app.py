@@ -74,8 +74,19 @@ model, tokenizer = load_model()
 questions = load_questions()
 uploaded_file = st.file_uploader("Choose a file")
 if uploaded_file is not None:
-	# To read file as text:
-	contract = textract.process(uploaded_file)
+	if '.txt' in uploaded_file.name:
+		with open(uploaded_file, 'r') as f:
+			contract = f.read()
+
+	elif '.doc' in uploaded_file.name or '.docx' in uploaded_file.name or '.pdf' in uploaded_file.name:
+		contract = textract.process(uploaded_file)
+	
+	else:
+		print("not a right format")
+		return
+	
+		
+
 #contract = contracts[0]
 
 st.header("Contract Understanding Atticus Dataset (CUAD) Demo")
