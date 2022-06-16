@@ -5,18 +5,16 @@ from predict import run_prediction
 
 st.set_page_config(layout="wide")
 
-model_list = ['akdeniz27/roberta-base-cuad',
-			  'akdeniz27/roberta-large-cuad',
-			  'akdeniz27/deberta-v2-xlarge-cuad']
-st.sidebar.header("Select CUAD Model")
-model_checkpoint = st.sidebar.radio("", model_list)
+# model_list = ['akdeniz27/roberta-base-cuad',
+# 			  'akdeniz27/roberta-large-cuad',
+# 			  'akdeniz27/deberta-v2-xlarge-cuad']
+# st.sidebar.header("Select CUAD Model")
+# model_checkpoint = st.sidebar.radio("", model_list)
 
-if model_checkpoint == "akdeniz27/deberta-v2-xlarge-cuad": import sentencepiece
+#if model_checkpoint == "akdeniz27/deberta-v2-xlarge-cuad": import sentencepiece
+model_checkpoint == "akdeniz27/deberta-v2-xlarge-cuad"
 
-st.sidebar.write("Project: https://www.atticusprojectai.org/cuad")
-st.sidebar.write("Git Hub: https://github.com/TheAtticusProject/cuad")
 st.sidebar.write("CUAD Dataset: https://huggingface.co/datasets/cuad")
-st.sidebar.write("License: CC BY 4.0 https://creativecommons.org/licenses/by/4.0/")
 
 @st.cache(allow_output_mutation=True)
 def load_model():
