@@ -83,7 +83,6 @@ if uploaded_file is not None:
 	
 	else:
 		print("not a right format")
-		return
 	
 		
 
