@@ -82,8 +82,11 @@ st.header("Contract Understanding Atticus Dataset (CUAD) Demo")
 st.write("Based on https://github.com/marshmellow77/cuad-demo")
 
 def display_func(option):
-	if "Document Name" in option:
-		return "Document Name"
+	entities = ["Document Name","Parties","Agreement Date","Effective Date","Expiration Date","Renewal Term","Notice Period To Terminate Renewal","Governing Law","Most Favored Nation","Non-Compete","Exclusivity","No-Solicit Of Customers","Competitive Restriction Exception","No-Solicit Of Employees","Non-Disparagement","Termination For Convenience","Rofr/Rofo/Rofn","Change Of Control","Anti-Assignment","Revenue/Profit Sharing","Price Restrictions","Minimum Commitment","Volume Restriction","Ip Ownership Assignment","Joint Ip Ownership","License Grant","Non-Transferable License","Affiliate License-Licensor","Affiliate License-Licensee","Unlimited/All-You-Can-Eat-License","Irrevocable Or Perpetual License","Source Code Escrow","Post-Termination Services","Audit Rights","Uncapped Liability","Cap On Liability","Liquidated Damages","Warranty Duration","Insurance","Covenant Not To Sue","Third Party Beneficiary"]
+	for e in entities:
+		if e in option:
+			return e
+	
 
 #selected_question = st.selectbox('Choose one of the 41 queries from the CUAD dataset:', questions)
 selected_question = st.multiselect('Choose one of the 41 queries from the CUAD dataset:', questions, format_func=display_func)
