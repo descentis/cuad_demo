@@ -72,7 +72,6 @@ def load_questions():
 
 model, tokenizer = load_model()
 questions = load_questions()
-contracts = load_contracts()
 
 contract = contracts[0]
 
