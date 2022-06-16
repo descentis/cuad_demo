@@ -87,7 +87,7 @@ if uploaded_file is not None:
 		for i in range(pdfReader.numPages):
 			pageObj = pdfReader.getPage(i)
 			contract += pageObj.extractText()
-		st.write(contract)
+		#st.write(contract)
 	
 	else:
 		print("not a right format")
