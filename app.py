@@ -2,6 +2,7 @@ from transformers import AutoModelForQuestionAnswering, AutoTokenizer
 import streamlit as st
 import json
 from predict import run_prediction
+import textract
 
 st.set_page_config(layout="wide")
 
@@ -73,9 +74,8 @@ model, tokenizer = load_model()
 questions = load_questions()
 uploaded_file = st.file_uploader("Choose a file")
 if uploaded_file is not None:
-	# To read file as bytes:
-	bytes_data = uploaded_file.getvalue()
-	contract = bytes_data
+	# To read file as text:
+	contract = textract.process(uploaded_file)
 #contract = contracts[0]
 
 st.header("Contract Understanding Atticus Dataset (CUAD) Demo")
