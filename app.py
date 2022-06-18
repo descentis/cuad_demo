@@ -116,9 +116,10 @@ selected_questions = st.multiselect('Choose queries from the CUAD dataset (can s
 
 Run_Button = st.button("Run", key=None)
 if Run_Button == True and not len(contract)==0:
-	for question in selected_questions:
-		question_set = [questions[0], question]
-		predictions = run_prediction(question_set, contract, model, tokenizer)
+#	for question in selected_questions:
+	question_set = selected_questions
+	predictions = run_prediction(question_set, contract, model, tokenizer)
 
-		for i, p in enumerate(predictions):
-			if i != 0: st.write(f"Question: {question_set[int(p)]}\n\nAnswer: {predictions[p]}\n\n")
+	for i, p in enumerate(predictions):
+		#if i != 0: st.write(f"Question: {question_set[int(p)]}\n\nAnswer: {predictions[p]}\n\n")
+		st.write(f"Question: {question_set[int(p)]}\n\nAnswer: {predictions[p]}\n\n")
