@@ -12,7 +12,7 @@ st.set_page_config(layout="wide")
 # 			  'akdeniz27/roberta-large-cuad',
 # 			  'akdeniz27/deberta-v2-xlarge-cuad']
 
-model_list = ['akdeniz27/deberta-v2-xlarge-cuad']
+model_list = ['akdeniz27/roberta-large-cuad']
 def side_disp(option):
 	return option.replace("akdeniz27", "CoreCLM")
 st.sidebar.header("Select CUAD Model")
