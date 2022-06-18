@@ -5,6 +5,7 @@ from predict import run_prediction
 import textract
 from io import StringIO
 import PyPDF2
+import torch
 
 st.set_page_config(layout="wide")
 
