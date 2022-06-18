@@ -18,6 +18,8 @@ def side_disp(option):
 st.sidebar.header("Select CUAD Model")
 model_checkpoint = st.sidebar.radio("", model_list, format_func=side_disp)
 
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+st.write(device)
 if model_checkpoint == "akdeniz27/deberta-v2-xlarge-cuad": import sentencepiece
 # import sentencepiece
 # model_checkpoint = "akdeniz27/deberta-v2-xlarge-cuad"
