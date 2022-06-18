@@ -118,7 +118,8 @@ Run_Button = st.button("Run", key=None)
 if Run_Button == True and not len(contract)==0:
 #	for question in selected_questions:
 	question_set = selected_questions
-	predictions = run_prediction(question_set, contract, model, tokenizer)
+	with st.spinner('Running predictions...'):
+		predictions = run_prediction(question_set, contract, model, tokenizer)
 
 	for i, p in enumerate(predictions):
 		#if i != 0: st.write(f"Question: {question_set[int(p)]}\n\nAnswer: {predictions[p]}\n\n")
