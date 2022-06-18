@@ -8,10 +8,11 @@ import PyPDF2
 
 st.set_page_config(layout="wide")
 
-model_list = ['akdeniz27/roberta-base-cuad',
-			  'akdeniz27/roberta-large-cuad',
-			  'akdeniz27/deberta-v2-xlarge-cuad']
+# model_list = ['akdeniz27/roberta-base-cuad',
+# 			  'akdeniz27/roberta-large-cuad',
+# 			  'akdeniz27/deberta-v2-xlarge-cuad']
 
+model_list = ['akdeniz27/deberta-v2-xlarge-cuad']
 def side_disp(option):
 	return option.replace("akdeniz27", "CoreCLM")
 st.sidebar.header("Select CUAD Model")
