@@ -12,7 +12,7 @@ from transformers import (
 from transformers.data.processors.squad import SquadResult, SquadV2Processor, SquadExample
 from transformers.data.metrics.squad_metrics import compute_predictions_logits
 
-def run_prediction(question_texts, context_text, model_path):
+def run_prediction(question_texts, context_text, model, tokenizer):
     ### Setting hyperparameters
     max_seq_length = 512
     doc_stride = 256
@@ -26,13 +26,14 @@ def run_prediction(question_texts, context_text, model_path):
 
     def to_list(tensor):
         return tensor.detach().cpu().tolist()
-
+    '''
     config_class, model_class, tokenizer_class = (
         AutoConfig, AutoModelForQuestionAnswering, AutoTokenizer)
     config = config_class.from_pretrained(model_path)
     tokenizer = tokenizer_class.from_pretrained(
         model_path, do_lower_case=True, use_fast=False)
     model = model_class.from_pretrained(model_path, config=config)
+    '''
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model.to(device)
