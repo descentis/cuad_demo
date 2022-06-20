@@ -35,6 +35,8 @@ def load_model():
 
 @st.cache(allow_output_mutation=True)
 def load_questions():
+	entities = ["Document Name","Parties","Agreement Date","Effective Date","Expiration Date","Renewal Term","Notice Period To Terminate Renewal","Governing Law","Most Favored Nation","Non-Compete","Exclusivity","No-Solicit Of Customers","Competitive Restriction Exception","No-Solicit Of Employees","Non-Disparagement","Termination For Convenience","Rofr/Rofo/Rofn","Change Of Control","Anti-Assignment","Revenue/Profit Sharing","Price Restrictions","Minimum Commitment","Volume Restriction","Ip Ownership Assignment","Joint Ip Ownership","License Grant","Non-Transferable License","Affiliate License-Licensor","Affiliate License-Licensee","Unlimited/All-You-Can-Eat-License","Irrevocable Or Perpetual License","Source Code Escrow","Post-Termination Services","Audit Rights","Uncapped Liability","Cap On Liability","Liquidated Damages","Warranty Duration","Insurance","Covenant Not To Sue","Third Party Beneficiary"]
+	#entities.sort()
 	questions = ['Highlight the parts (if any) of this contract related to "Document Name" that should be reviewed by a lawyer. Details: The name of the contract',
 'Highlight the parts (if any) of this contract related to "Parties" that should be reviewed by a lawyer. Details: The two or more parties who signed the contract',
 'Highlight the parts (if any) of this contract related to "Agreement Date" that should be reviewed by a lawyer. Details: The date of the contract',
@@ -77,6 +79,7 @@ def load_questions():
 'Highlight the parts (if any) of this contract related to "Covenant Not To Sue" that should be reviewed by a lawyer. Details: Is a party restricted from contesting the validity of the counterparty’s ownership of intellectual property or otherwise bringing a claim against the counterparty for matters unrelated to the contract?',
 'Highlight the parts (if any) of this contract related to "Third Party Beneficiary" that should be reviewed by a lawyer. Details: Is there a non-contracting party who is a beneficiary to some or all of the clauses in the contract and therefore can enforce its rights against a contracting party?'
 	]
+	questions = [x for _,x in sorted(zip(entities,questions))]
 	return questions
 
 model, tokenizer = load_model()
