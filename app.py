@@ -14,10 +14,11 @@ st.set_page_config(layout="wide")
 # 			  'akdeniz27/deberta-v2-xlarge-cuad']
 
 model_list = ['akdeniz27/roberta-large-cuad']
-def side_disp(option):
-	return option.replace("akdeniz27", "CoreCLM")
-st.sidebar.header("Select CUAD Model")
-model_checkpoint = st.sidebar.radio("", model_list, format_func=side_disp)
+# def side_disp(option):
+# 	return option.replace("akdeniz27", "CoreCLM")
+#st.sidebar.header("Select CUAD Model")
+#model_checkpoint = st.sidebar.radio("", model_list, format_func=side_disp)
+model_checkpoint = model_list[0]
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 st.write(device)
@@ -25,7 +26,9 @@ if model_checkpoint == "akdeniz27/deberta-v2-xlarge-cuad": import sentencepiece
 # import sentencepiece
 # model_checkpoint = "akdeniz27/deberta-v2-xlarge-cuad"
 
-st.sidebar.write("CUAD Dataset: https://huggingface.co/datasets/cuad")
+#st.sidebar.write("CUAD Dataset: https://huggingface.co/datasets/cuad")
+with st.sidebar:
+	st.image("coreclm_logo.png")
 
 @st.cache(allow_output_mutation=True)
 def load_model():
