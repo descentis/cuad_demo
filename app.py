@@ -82,6 +82,7 @@ def load_questions():
 model, tokenizer = load_model()
 questions = load_questions()
 uploaded_file = st.file_uploader("Choose a file (Currenty accepts text and pdf file formats)")
+contract = ""
 if uploaded_file is not None:
 	if '.txt' in uploaded_file.name:
 		stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
@@ -101,7 +102,7 @@ if uploaded_file is not None:
 	
 		
 with st.expander("Expand the Contract Document"):
-	st.write(contract)
+ 	st.write(contract)
 #contract = contracts[0]
 
 st.header("Contract Review (Beta)")
