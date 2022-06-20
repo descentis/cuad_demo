@@ -2,7 +2,7 @@ from transformers import AutoModelForQuestionAnswering, AutoTokenizer
 import streamlit as st
 import json
 from predict import run_prediction
-import textract
+#import textract
 from io import StringIO
 import PyPDF2
 import torch
@@ -13,7 +13,7 @@ st.set_page_config(layout="wide")
 # 			  'akdeniz27/roberta-large-cuad',
 # 			  'akdeniz27/deberta-v2-xlarge-cuad']
 
-model_list = ['akdeniz27/roberta-large-cuad']
+model_list = ['akdeniz27/roberta-base-cuad']
 # def side_disp(option):
 # 	return option.replace("akdeniz27", "CoreCLM")
 #st.sidebar.header("Select CUAD Model")
