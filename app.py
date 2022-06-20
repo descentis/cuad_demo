@@ -28,7 +28,7 @@ if model_checkpoint == "akdeniz27/deberta-v2-xlarge-cuad": import sentencepiece
 
 #st.sidebar.write("CUAD Dataset: https://huggingface.co/datasets/cuad")
 with st.sidebar:
-	st.image("coreclm_logo.png", width=100)
+	st.image("coreclm_logo.png", width=200)
 
 @st.cache(allow_output_mutation=True)
 def load_model():
