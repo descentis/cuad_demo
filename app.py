@@ -156,6 +156,8 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 			data = {'question':question_set, 'contract': contract}
 			res = requests.post(f"https://7198-104-198-188-156.ngrok.io/predict", data)
 			data = res.json()
+			for key,val in data.items():
+				st.write(key)
 			predictions = data['prediction']
 			#predictions = run_prediction(question_set, contract, model, tokenizer)
 		else:
