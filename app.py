@@ -127,12 +127,22 @@ selected_questions = st.multiselect('Choose queries from the CUAD dataset (can s
 
 
 Run_Button = st.button("Run", key=None)
+Stop_button = st.button("Stop")
+
+if 'boolean' not in st.session_state:
+	st.session_state.boolean = False
+
 if Run_Button == True and not len(contract)==0:
 #	for question in selected_questions:
 	question_set = selected_questions
+	if st.session_state.boolean == True:
+		break
 	with st.spinner('Running predictions...'):
+		if st.session_state.boolean == True:
+			break
 		predictions = run_prediction(question_set, contract, model, tokenizer)
-
+	if st.session_state.boolean == True:
+		break
 	for i, p in enumerate(predictions):
 		#if i != 0: st.write(f"Question: {question_set[int(p)]}\n\nAnswer: {predictions[p]}\n\n")
 		st.write(f"Question: {question_set[int(p)]}\n\nAnswer: {predictions[p]}\n\n")
