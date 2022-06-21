@@ -35,8 +35,8 @@ with st.sidebar:
 
 st.markdown(f'''
     <style>
-        section[data-testid="stSidebar"] .css-1siy2j7 e1fqkh3o3 {{width: 14rem;}}
-        section[data-testid="stSidebar"] .css-1d391kg {{width: 14rem;}}
+        section[data-testid="stSidebar"] .css-1siy2j7 {{width: 5rem;}}
+        section[data-testid="stSidebar"] .css-e1fqkh3o3 {{width: 5rem;}}
     </style>
 ''',unsafe_allow_html=True)	
 	
