@@ -131,8 +131,9 @@ Stop_button = st.button("Stop")
 
 if 'boolean' not in st.session_state:
 	st.session_state.boolean = False
-
-if Run_Button == True and not len(contract)==0:
+if Stop_button:
+	st.session_state.boolean = True
+if Run_Button == True and not len(contract)==0 and st.session_state.boolean == False:
 #	for question in selected_questions:
 	question_set = selected_questions
 	with st.spinner('Running predictions...'):
