@@ -145,7 +145,7 @@ if Stop_button:
 	st.session_state.boolean = True
 
 st.write(st.session_state['boolean'])
-st.write(st.session_state['selected'])
+#st.write(st.session_state['selected'])
 if Run_Button == True and not len(contract)==0 and st.session_state.boolean == False:
 #	for question in selected_questions:
 	question_set = selected_questions
