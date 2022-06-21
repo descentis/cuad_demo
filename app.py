@@ -93,7 +93,7 @@ def clear_multi():
 
 model, tokenizer = load_model()
 questions = load_questions()
-uploaded_file = st.file_uploader("Choose a file (Currenty accepts text and pdf file formats)")
+uploaded_file = st.file_uploader("Choose a file (Currently accepts text and pdf file formats)")
 contract = ""
 if uploaded_file is not None:
 	if '.txt' in uploaded_file.name:
@@ -113,7 +113,7 @@ if uploaded_file is not None:
 		print("not a right format")
 	
 		
-with st.expander("Expand the Contract Document"):
+with st.expander("Expand the contract document"):
  	st.write(contract)
 #contract = contracts[0]
 
@@ -168,7 +168,7 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 	if type(predictions) != str:
 		for i, p in enumerate(predictions):
 			#if i != 0: st.write(f"Question: {question_set[int(p)]}\n\nAnswer: {predictions[p]}\n\n")
-			st.write(f"Question: {question_set[int(p)]}\n\nAnswer: {predictions[p]}\n\n")
+			st.write(str(i+1)+"\t"+f"Question: {question_set[int(p)]}\n\n\tAnswer: {predictions[p]}\n\n")
 
 if reset_button:
 	if 'selected' in st.session_state:
