@@ -153,13 +153,15 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 	question_set = selected_questions
 	with st.spinner('Running predictions...'):
 		if st.session_state.boolean == False:
-			data = {'question':question_set, 'contract': contract}
-			res = requests.post(f"https://7198-104-198-188-156.ngrok.io/predict", data)
-			data = res.json()
-			for key,val in data.items():
-				st.write(key)
-			predictions = data['prediction']
-			#predictions = run_prediction(question_set, contract, model, tokenizer)
+			try:
+				data = {'question':question_set, 'contract': contract}
+				res = requests.post(f"https://7198-104-198-188-156.ngrok.io/predict", data)
+				data = res.json()
+				for key,val in data.items():
+					st.write(key)
+				predictions = data['prediction']
+			except:
+				predictions = run_prediction(question_set, contract, model, tokenizer)
 		else:
 			st.write("Stopping the function")
 			predictions = ""
