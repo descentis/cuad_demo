@@ -154,7 +154,7 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 	with st.spinner('Running predictions...'):
 		if st.session_state.boolean == False:
 			data = {'question':question_set, 'contract': contract}
-			res = requests.post(f"https://ae3a-34-86-239-150.ngrok.io/predict", data)
+			res = requests.post(f"https://7198-104-198-188-156.ngrok.io/predict", data)
 			data = res.json()
 			predictions = data['prediction']
 			#predictions = run_prediction(question_set, contract, model, tokenizer)
