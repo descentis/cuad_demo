@@ -93,7 +93,7 @@ def clear_multi():
 
 model, tokenizer = load_model()
 questions = load_questions()
-uploaded_file = st.file_uploader("Choose a file (Currently accepts text and pdf file formats)")
+uploaded_file = st.file_uploader("Choose a file (Currently accepts text and pdf file formats)", key="multiselect")
 contract = ""
 if uploaded_file is not None:
 	if '.txt' in uploaded_file.name:
@@ -131,6 +131,8 @@ def display_func(option):
 selected_questions = st.multiselect('Choose queries from the CUAD dataset (can select multiple):', questions, format_func=display_func, key="multiselect")
 #question_set = [questions[0], selected_question]
 
+for key, val in st.session_state.items():
+	st.write(key)
 col1, col2, col3 = st.columns([0.6,1,8])
 
 with col1:
