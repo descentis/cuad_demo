@@ -93,7 +93,7 @@ def clear_multi():
 
 model, tokenizer = load_model()
 questions = load_questions()
-uploaded_file = st.file_uploader("Choose a file (Currently accepts text and pdf file formats)", key="multiselect")
+uploaded_file = st.file_uploader("Choose a file (Currently accepts text and pdf file formats)", key=st.session_state.key)
 contract = ""
 if uploaded_file is not None:
 	if '.txt' in uploaded_file.name:
@@ -131,8 +131,8 @@ def display_func(option):
 selected_questions = st.multiselect('Choose queries from the CUAD dataset (can select multiple):', questions, format_func=display_func, key="multiselect")
 #question_set = [questions[0], selected_question]
 
-for key, val in st.session_state.items():
-	st.write(key)
+# for key, val in st.session_state.items():
+# 	st.write(key)
 col1, col2, col3 = st.columns([0.6,1,8])
 
 with col1:
@@ -141,7 +141,9 @@ with col2:
     Stop_button = st.button("Stop")
 with col3:
     reset_button = st.button("Reset", on_click=clear_multi)
-
+if reset_button and 'key' in st.session_state.keys():
+    st.session_state.pop('key')
+    st.experimental_rerun()
 
 if 'boolean' not in st.session_state:
 	st.session_state.boolean = False
@@ -172,9 +174,6 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 			#if i != 0: st.write(f"Question: {question_set[int(p)]}\n\nAnswer: {predictions[p]}\n\n")
 			st.write(str(i+1)+".)\t"+f"Question: {question_set[int(p)]}\n\n\tAnswer: {predictions[p]}\n\n")
 
-if reset_button:
-	if 'selected' in st.session_state:
-		del st.session_state.selected
 if st.session_state.boolean == True:
 	st.write("Prediction Stopped")
 	st.session_state.boolean = False
