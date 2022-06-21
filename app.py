@@ -129,7 +129,7 @@ def display_func(option):
 selected_questions = st.multiselect('Choose queries from the CUAD dataset (can select multiple):', questions, format_func=display_func, key="multiselect")
 #question_set = [questions[0], selected_question]
 
-col1, col2, col3 = st.columns([0.07,1,0.7])
+col1, col2, col3 = st.columns([0.07,1,0.07])
 
 with col1:
    Run_Button = st.button('Run', key=None)
