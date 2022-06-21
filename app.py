@@ -136,13 +136,13 @@ if Run_Button == True and not len(contract)==0:
 #	for question in selected_questions:
 	question_set = selected_questions
 	if st.session_state.boolean == True:
-		break
+		return
 	with st.spinner('Running predictions...'):
 		if st.session_state.boolean == True:
-			break
+			return
 		predictions = run_prediction(question_set, contract, model, tokenizer)
 	if st.session_state.boolean == True:
-		break
+		return
 	for i, p in enumerate(predictions):
 		#if i != 0: st.write(f"Question: {question_set[int(p)]}\n\nAnswer: {predictions[p]}\n\n")
 		st.write(f"Question: {question_set[int(p)]}\n\nAnswer: {predictions[p]}\n\n")
