@@ -6,6 +6,8 @@ from predict import run_prediction
 from io import StringIO
 import PyPDF2
 import torch
+import requests
+import json
 
 st.set_page_config(layout="wide")
 
@@ -151,7 +153,10 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 	question_set = selected_questions
 	with st.spinner('Running predictions...'):
 		if st.session_state.boolean == False:
-			predictions = run_prediction(question_set, contract, model, tokenizer)
+			res = requests.post(f"https://ae3a-34-86-239-150.ngrok.io/predict", question_set, contract)
+			data = res.json()
+			predictions = data['prediction']
+			#predictions = run_prediction(question_set, contract, model, tokenizer)
 		else:
 			st.write("Stopping the function")
 			predictions = ""
