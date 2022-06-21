@@ -33,6 +33,13 @@ if model_checkpoint == "akdeniz27/deberta-v2-xlarge-cuad": import sentencepiece
 with st.sidebar:
 	st.image("coreclm_logo.png", width=200)
 
+st.markdown(f'''
+    <style>
+        section[data-testid="stSidebar"] .css-ng1t4o {{width: 14rem;}}
+        section[data-testid="stSidebar"] .css-1d391kg {{width: 14rem;}}
+    </style>
+''',unsafe_allow_html=True)	
+	
 @st.cache(allow_output_mutation=True)
 def load_model():
     model = AutoModelForQuestionAnswering.from_pretrained(model_checkpoint)
