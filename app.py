@@ -31,7 +31,7 @@ if model_checkpoint == "akdeniz27/deberta-v2-xlarge-cuad": import sentencepiece
 
 #st.sidebar.write("CUAD Dataset: https://huggingface.co/datasets/cuad")
 with st.sidebar:
-	st.image("logo_black-orange.png", width=200)
+	st.image("logo_black-orange.png", width=150)
 
 st.markdown(f'''
     <style>
