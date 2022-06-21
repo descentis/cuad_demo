@@ -132,7 +132,7 @@ def display_func(option):
 	
 
 #selected_question = st.selectbox('Choose one of the 41 queries from the CUAD dataset:', questions)
-selected_questions = st.multiselect('Choose queries from the CUAD dataset (can select multiple):', questions, format_func=display_func, key="multiselect")
+selected_questions = st.multiselect('Select clause type(s) to search and review (can make multiple selections):', questions, format_func=display_func, key="multiselect")
 #question_set = [questions[0], selected_question]
 
 # for key, val in st.session_state.items():
