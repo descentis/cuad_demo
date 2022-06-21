@@ -168,7 +168,7 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 	if type(predictions) != str:
 		for i, p in enumerate(predictions):
 			#if i != 0: st.write(f"Question: {question_set[int(p)]}\n\nAnswer: {predictions[p]}\n\n")
-			st.write(str(i+1)+"\t"+f"Question: {question_set[int(p)]}\n\n\tAnswer: {predictions[p]}\n\n")
+			st.write(str(i+1)+".)\t"+f"Question: {question_set[int(p)]}\n\n\tAnswer: {predictions[p]}\n\n")
 
 if reset_button:
 	if 'selected' in st.session_state:
