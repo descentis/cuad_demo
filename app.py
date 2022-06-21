@@ -87,6 +87,9 @@ def load_questions():
 	questions = [x for _,x in sorted(zip(entities,questions))]
 	return questions
 
+if 'key' not in st.session_state: 
+	st.session_state.key = str(randint(1000, 100000000))
+
 def clear_multi():
     st.session_state.multiselect = []
     return
