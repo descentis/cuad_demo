@@ -85,6 +85,10 @@ def load_questions():
 	questions = [x for _,x in sorted(zip(entities,questions))]
 	return questions
 
+def clear_multi():
+    st.session_state.multiselect = []
+    return
+
 model, tokenizer = load_model()
 questions = load_questions()
 uploaded_file = st.file_uploader("Choose a file (Currenty accepts text and pdf file formats)")
@@ -122,7 +126,7 @@ def display_func(option):
 	
 
 #selected_question = st.selectbox('Choose one of the 41 queries from the CUAD dataset:', questions)
-selected_questions = st.multiselect('Choose queries from the CUAD dataset (can select multiple):', questions, format_func=display_func)
+selected_questions = st.multiselect('Choose queries from the CUAD dataset (can select multiple):', questions, format_func=display_func, key="multiselect")
 #question_set = [questions[0], selected_question]
 
 col1, col2, col3 = st.columns([1,1,1])
@@ -132,7 +136,7 @@ with col1:
 with col2:
     Stop_button = st.button("Stop")
 with col3:
-    reset_button = st.button("Reset")
+    reset_button = st.button("Reset", on_click=clear_multi)
 
 
 if 'boolean' not in st.session_state:
