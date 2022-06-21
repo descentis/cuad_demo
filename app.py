@@ -125,16 +125,22 @@ def display_func(option):
 selected_questions = st.multiselect('Choose queries from the CUAD dataset (can select multiple):', questions, format_func=display_func)
 #question_set = [questions[0], selected_question]
 
+col1, col2, col3 = st.columns([1,1,1])
 
-Run_Button = st.button("Run", key=None)
-Stop_button = st.button("Stop")
+with col1:
+   Run_Button = st.button('Run', key=None)
+with col2:
+    Stop_button = st.button("Stop")
+with col3:
+    reset_button = st.button("Reset")
+
 
 if 'boolean' not in st.session_state:
 	st.session_state.boolean = False
 if Stop_button:
 	st.session_state.boolean = True
 
-st.write(st.session_state['boolean'])
+#st.write(st.session_state['boolean'])
 if Run_Button == True and not len(contract)==0 and st.session_state.boolean == False:
 #	for question in selected_questions:
 	question_set = selected_questions
@@ -149,7 +155,6 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 			#if i != 0: st.write(f"Question: {question_set[int(p)]}\n\nAnswer: {predictions[p]}\n\n")
 			st.write(f"Question: {question_set[int(p)]}\n\nAnswer: {predictions[p]}\n\n")
 
-reset_button = st.button("Reset")
 if reset_button:
 	if 'selected' in st.session_state:
 		del st.session_state.selected
