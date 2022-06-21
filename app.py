@@ -148,3 +148,7 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 		for i, p in enumerate(predictions):
 			#if i != 0: st.write(f"Question: {question_set[int(p)]}\n\nAnswer: {predictions[p]}\n\n")
 			st.write(f"Question: {question_set[int(p)]}\n\nAnswer: {predictions[p]}\n\n")
+if st.session_state.boolean == True:
+	st.write("Prediction Stopped")
+	st.session_state.boolean = False
+	
