@@ -8,6 +8,7 @@ import PyPDF2
 import torch
 import requests
 import json
+from random import randint
 
 st.set_page_config(layout="wide")
 
