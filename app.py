@@ -37,6 +37,8 @@ st.markdown(f'''
     <style>
         section[data-testid="stSidebar"] .css-1siy2j7 {{width: 15rem;}}
         section[data-testid="stSidebar"] .css-e1fqkh3o3 {{width: 15rem;}}
+	section[data-testid="stFileUploadDropzone"] .css-1cpxqw2 {{display: none;}}
+	section[data-testid="stFileUploadDropzone"] .css-edgvbvh9 {{display: none;}}
     </style>
 ''',unsafe_allow_html=True)	
 	
