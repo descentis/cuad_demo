@@ -117,11 +117,14 @@ if uploaded_file is not None:
 		#contract = textract.process(uploaded_file.name)
 		pdfReader = PyPDF2.PdfFileReader(uploaded_file)
 		contract = ""
+		page_num = {}
 		for i in range(pdfReader.numPages):
 			pageObj = pdfReader.getPage(i)
 			contract += pageObj.extractText()
+			page_num[len(contract)] = i+1
 		#st.write(contract)
-	
+		page_num = dict(sorted(page_num.items()))
+		print(page_num)
 	else:
 		print("not a right format")
 	
@@ -205,7 +208,7 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 				#print(final)
 			
 			answer = '\n'.join(final)
-			st.write(answer)
+			#st.write(answer)
 			st.write(str(i+1)+".)\t"+f"Question: {question_set[int(p)]}\n\n\tAnswer: {predictions[p]}\n\n")
 
 if st.session_state.boolean == True:
