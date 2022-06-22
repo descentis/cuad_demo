@@ -39,6 +39,8 @@ st.markdown(f'''
         section[data-testid="stSidebar"] .css-e1fqkh3o3 {{width: 15rem;}}
 	section[data-testid="stFileUploadDropzone"] .css-1cpxqw2 {{display: none;}}
 	section[data-testid="stFileUploadDropzone"] .css-edgvbvh9 {{display: none;}}
+	section[data-testid="stMarkdownContainer"] .css-stCodeBlock css-4zfol6 {{width: 60%, height:150px;}}
+	section[data-testid="stMarkdownContainer"] .css-stCodeBlock css-e10mrw3y0 {{width: 60%, height:150px;}}
     </style>
 ''',unsafe_allow_html=True)	
 	
@@ -217,7 +219,7 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 					break
 					
 			#st.write(answer)
-			st.write(str(i+1)+".)\t"+f"Question: {question_set[int(p)]}\n\n\tAnswer: {predictions[p]}"+" (page number: "+str(page)+") \n\n")
+			st.write(str(i+1)+".\t"+f"Question: {question_set[int(p)]}\n\n\tAnswer: {predictions[p]}"+" (page number: "+str(page)+") \n\n")
 
 if st.session_state.boolean == True:
 	st.write("Prediction Stopped")
