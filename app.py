@@ -204,7 +204,7 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 				i += 1
 			
 			answer = '\n'.join(final)
-			
+			st.write(answer)
 			st.write(str(i+1)+".)\t"+f"Question: {question_set[int(p)]}\n\n\tAnswer: {answer}\n\n")
 
 if st.session_state.boolean == True:
