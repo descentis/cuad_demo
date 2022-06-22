@@ -112,6 +112,7 @@ if uploaded_file is not None:
 	if '.txt' in uploaded_file.name:
 		stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
 		contract = stringio.read()
+		page_num = {}
 
 	elif '.doc' in uploaded_file.name or '.docx' in uploaded_file.name or '.pdf' in uploaded_file.name:
 		#contract = textract.process(uploaded_file.name)
@@ -124,7 +125,7 @@ if uploaded_file is not None:
 			page_num[len(contract)] = i+1
 		#st.write(contract)
 		page_num = dict(sorted(page_num.items()))
-		print(page_num)
+		#print(page_num)
 	else:
 		print("not a right format")
 	
@@ -192,24 +193,31 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 	if type(predictions) != str:
 		for i, p in enumerate(predictions):
 			#if i != 0: st.write(f"Question: {question_set[int(p)]}\n\nAnswer: {predictions[p]}\n\n")
-			answer = predictions[p].split(' ')
-			c = 5
-			k = 0
-			ans_data = ''
-			final = []
-			for each in answer:
-				if k%c == 0:
-					if ans_data != '':
-						final.append(ans_data)
-						ans_data = ''
-				else:
-					ans_data = ans_data+' '+each
-				k += 1
-				#print(final)
+# 			answer = predictions[p].split(' ')
+# 			c = 5
+# 			k = 0
+# 			ans_data = ''
+# 			final = []
+# 			for each in answer:
+# 				if k%c == 0:
+# 					if ans_data != '':
+# 						final.append(ans_data)
+# 						ans_data = ''
+# 				else:
+# 					ans_data = ans_data+' '+each
+# 				k += 1
+# 				#print(final)
 			
-			answer = '\n'.join(final)
+# 			answer = '\n'.join(final)
+			page = -1
+			val = contract.find(predictions[p])
+			for key, val in page_num.items():
+				if val <= key:
+					page = val
+					break
+					
 			#st.write(answer)
-			st.write(str(i+1)+".)\t"+f"Question: {question_set[int(p)]}\n\n\tAnswer: {predictions[p]}\n\n")
+			st.write(str(i+1)+".)\t"+f"Question: {question_set[int(p)]}\n\n\tAnswer: {predictions[p]}"+" (page number: "+str(page)+") \n\n")
 
 if st.session_state.boolean == True:
 	st.write("Prediction Stopped")
