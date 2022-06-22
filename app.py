@@ -176,6 +176,7 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 			data = res.json()
 			for key,val in data.items():
 				st.write(key)
+				st.write(data['detail'])
 			predictions = data['prediction']
 # 			except:
 
