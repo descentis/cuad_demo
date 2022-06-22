@@ -9,7 +9,6 @@ import torch
 import requests
 import json
 from random import randint
-from fastapi.testclient import TestClient
 
 st.set_page_config(layout="wide")
 
