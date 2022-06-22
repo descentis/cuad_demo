@@ -189,7 +189,21 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 	if type(predictions) != str:
 		for i, p in enumerate(predictions):
 			#if i != 0: st.write(f"Question: {question_set[int(p)]}\n\nAnswer: {predictions[p]}\n\n")
-			st.write(str(i+1)+".)\t"+f"Question: {question_set[int(p)]}\n\n\tAnswer: {predictions[p]}\n\n")
+			answer = predictions[p].split(' ')
+			c = 5, i=0
+			ans_data = ''
+			final = []
+			for each in answer:
+				if i%c == 0:
+					if ans_data != '':
+						final.append(ans_data)
+						ans_data = ''
+				else:
+					ans_data = ans_data+' '+each
+			
+			answer = '\n'.join(final)
+			
+			st.write(str(i+1)+".)\t"+f"Question: {question_set[int(p)]}\n\n\tAnswer: \n{answer}\n\n")
 
 if st.session_state.boolean == True:
 	st.write("Prediction Stopped")
