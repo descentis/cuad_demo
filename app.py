@@ -202,7 +202,7 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 				else:
 					ans_data = ans_data+' '+each
 				k += 1
-				print(final)
+				#print(final)
 			
 			answer = '\n'.join(final)
 			st.write(answer)
