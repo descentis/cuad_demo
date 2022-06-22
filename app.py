@@ -205,7 +205,7 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 			
 			answer = '\n'.join(final)
 			
-			st.write(str(i+1)+".)\t"+f"Question: {question_set[int(p)]}\n\n\tAnswer: \n{answer}\n\n")
+			st.write(str(i+1)+".)\t"+f"Question: {question_set[int(p)]}\n\n\tAnswer: {answer}\n\n")
 
 if st.session_state.boolean == True:
 	st.write("Prediction Stopped")
