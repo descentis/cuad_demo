@@ -180,8 +180,8 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 				predictions = data['prediction']
 			except:
 
-				for key,val in data.items():
-					st.write(key)
+# 				for key,val in data.items():
+# 					st.write(key)
 				predictions = run_prediction(question_set, contract, model, tokenizer)
 		else:
 			st.write("Stopping the function")
@@ -191,17 +191,17 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 			#if i != 0: st.write(f"Question: {question_set[int(p)]}\n\nAnswer: {predictions[p]}\n\n")
 			answer = predictions[p].split(' ')
 			c = 5
-			i = 0
+			k = 0
 			ans_data = ''
 			final = []
 			for each in answer:
-				if i%c == 0:
+				if k%c == 0:
 					if ans_data != '':
 						final.append(ans_data)
 						ans_data = ''
 				else:
 					ans_data = ans_data+' '+each
-				i += 1
+				k += 1
 			
 			answer = '\n'.join(final)
 			st.write(answer)
