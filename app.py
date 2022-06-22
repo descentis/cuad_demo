@@ -201,6 +201,7 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 						ans_data = ''
 				else:
 					ans_data = ans_data+' '+each
+				i += 1
 			
 			answer = '\n'.join(final)
 			
