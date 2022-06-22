@@ -190,7 +190,8 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 		for i, p in enumerate(predictions):
 			#if i != 0: st.write(f"Question: {question_set[int(p)]}\n\nAnswer: {predictions[p]}\n\n")
 			answer = predictions[p].split(' ')
-			c = 5, i=0
+			c = 5
+			i = 0
 			ans_data = ''
 			final = []
 			for each in answer:
