@@ -9,6 +9,7 @@ import torch
 import requests
 import json
 from random import randint
+from fastapi.testclient import TestClient
 
 st.set_page_config(layout="wide")
 
@@ -172,7 +173,7 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 		if st.session_state.boolean == False:
 			#try:
 			data = {'question':question_set, 'contract': contract}
-			res = requests.post(f"https://9e5d-35-197-102-25.ngrok.io/predict")
+			res = requests.post(f"https://1869-34-143-141-154.ngrok.io/predict", data)
 			data = res.json()
 			for key,val in data.items():
 				st.write(key)
