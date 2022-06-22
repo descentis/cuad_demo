@@ -194,7 +194,6 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 			k = 0
 			ans_data = ''
 			final = []
-			print(answer)
 			for each in answer:
 				if k%c == 0:
 					if ans_data != '':
@@ -203,6 +202,7 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 				else:
 					ans_data = ans_data+' '+each
 				k += 1
+				print(ans_data)
 			
 			answer = '\n'.join(final)
 			st.write(answer)
