@@ -108,7 +108,7 @@ def clear_multi():
 
 model, tokenizer = load_model()
 questions = load_questions()
-uploaded_file = st.file_uploader("Choose a file (currently accepts text and pdf file formats)", key=st.session_state.key)
+uploaded_file = st.file_uploader("Choose a file (currently accepts pdf file format)", key=st.session_state.key)
 contract = ""
 if uploaded_file is not None:
 	if '.txt' in uploaded_file.name:
