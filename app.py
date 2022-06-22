@@ -194,7 +194,7 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 			k = 0
 			ans_data = ''
 			final = []
-			print(aswer)
+			print(answer)
 			for each in answer:
 				if k%c == 0:
 					if ans_data != '':
