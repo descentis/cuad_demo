@@ -127,7 +127,7 @@ if uploaded_file is not None:
 		for i in range(pdfReader.numPages):
 			pageObj = pdfReader.getPage(i)
 			contract += pageObj.extractText()
-			page_num[len(contract)] = i+1
+			page_num[len(contract.replace('\n', ''))] = i+1
 		#st.write(contract)
 		page_num = dict(sorted(page_num.items()))
 		#print(page_num)
@@ -215,9 +215,8 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 			
 # 			answer = '\n'.join(final)
 			page = -1
-			ans = predictions[p].replace('\n', '')
-			st.write(ans)
-			val = contract.find(ans)
+			contract_check = contract.replace('\n', '')
+			val = contract_check.find(predictions[p])
 			for key, val in page_num.items():
 				if val <= key:
 					page = val
