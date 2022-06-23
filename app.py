@@ -212,7 +212,8 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 			
 # 			answer = '\n'.join(final)
 			page = -1
-			val = contract.find(predictions[p])
+			ans = predictions[p].replace('\n', '')
+			val = contract.find(ans)
 			for key, val in page_num.items():
 				if val <= key:
 					page = val
