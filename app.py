@@ -118,7 +118,10 @@ if uploaded_file is not None:
 
 	elif '.doc' in uploaded_file.name or '.docx' in uploaded_file.name or '.pdf' in uploaded_file.name:
 		#contract = textract.process(uploaded_file.name)
-		pdfReader = PyPDF2.PdfFileReader(uploaded_file)
+		try:
+			pdfReader = PyPDF2.PdfFileReader(uploaded_file)
+		except:
+			st.write("Error in reading file, please try another contract")
 		contract = ""
 		page_num = {}
 		for i in range(pdfReader.numPages):
