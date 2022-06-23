@@ -26,7 +26,7 @@ model_list = ['akdeniz27/roberta-base-cuad']
 model_checkpoint = model_list[0]
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-st.write(multiprocessing.cpu_count())
+st.write("CPU:", multiprocessing.cpu_count())
 if model_checkpoint == "akdeniz27/deberta-v2-xlarge-cuad": import sentencepiece
 # import sentencepiece
 # model_checkpoint = "akdeniz27/deberta-v2-xlarge-cuad"
