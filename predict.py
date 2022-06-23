@@ -62,7 +62,7 @@ def run_prediction(question_texts, context_text, model, tokenizer):
         max_query_length=max_query_length,
         is_training=False,
         return_dataset="pt",
-        threads=1,
+        threads=4,
     )
 
     eval_sampler = SequentialSampler(dataset)
