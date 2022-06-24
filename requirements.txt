@@ -3,3 +3,5 @@ torch
 transformers
 PyPDF2
 sentencepiece
+fuzzywuzzy
+python-Levenshtein
