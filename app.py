@@ -225,7 +225,7 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 			       ratio = fuzz.ratio(matcher, predictions[p])
 			       if ratio > 80:
 			       		val = j
-				else:
+			       else:
 					val = 0
 # 			contract_check = re.sub(r'\n\s*\n', '', contract)
 # 			contract_check = re.sub(' +', ' ', contract_check)
