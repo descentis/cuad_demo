@@ -130,7 +130,8 @@ if uploaded_file is not None:
 		for i in range(pdfReader.numPages):
 			pageObj = pdfReader.getPage(i)
 			contract += pageObj.extractText()
-			page_num[len(contract.replace('\n', ''))] = i+1
+			page_num[len(re.sub(r'\n\s*\n', '', contract))] = i+1
+			#page_num[len(contract.replace('\n', ''))] = i+1
 		#st.write(contract)
 		page_num = dict(sorted(page_num.items()))
 		#print(page_num)
@@ -139,7 +140,7 @@ if uploaded_file is not None:
 	
 		
 with st.expander("Expand the contract document"):
- 	st.write(contract.replace('\n', ''))
+ 	st.write(contract)
 #contract = contracts[0]
 
 st.header("Contract Review (Beta)")
@@ -218,7 +219,7 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 			
 # 			answer = '\n'.join(final)
 			page = -1
-			contract_check = contract.replace('\n', '')
+			contract_check = re.sub(r'\n\s*\n', '', contract)
 			contract_check = re.sub(' +', ' ', contract_check)
 			cleaned_p = re.sub(' +', ' ', predictions[p])
 			val = contract_check.find(cleaned_p)
