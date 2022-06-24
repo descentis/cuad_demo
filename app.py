@@ -249,6 +249,7 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 						e += 1
 
 				final_pred = contract[k:e+1]
+				final_pred = final_pred.find("\t", "").replace("\r", "").replace("\n", "")
 
 # 			contract_check = re.sub(r'\n\s*\n', '', contract)
 # 			contract_check = re.sub(' +', ' ', contract_check)
