@@ -10,6 +10,7 @@ import requests
 import json
 from random import randint
 import multiprocessing
+import re
 
 st.set_page_config(layout="wide")
 
@@ -218,7 +219,8 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 # 			answer = '\n'.join(final)
 			page = -1
 			contract_check = contract.replace('\n', '')
-			val = contract_check.find(predictions[p].replace('  ', ' '))
+			cleaned_p = re.sub(' +', ' ', predictions[p])
+			val = contract_check.find(cleaned_p)
 			st.write(val)
 			for key, v in page_num.items():
 				if val <= key:
