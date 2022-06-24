@@ -221,7 +221,7 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 # 			answer = '\n'.join(final)
 			page = -1
 			val = -1
-			if len(predictions[p]) != 0
+			if len(predictions[p]) != 0:
 				for j in range(0, len(contract), len(predictions[p])):
 					matcher = contract[j:j+len(predictions[p])]
 					ratio = fuzz.ratio(matcher, predictions[p])
