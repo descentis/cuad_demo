@@ -222,14 +222,18 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 			page = -1
 			val = -1
 			if len(predictions[p]) != 0:
+				pg_finder = {}
+				all_ratio = []
 				for j in range(0, len(contract), len(predictions[p])):
 					matcher = contract[j:j+len(predictions[p])]
 					ratio = fuzz.ratio(matcher, predictions[p])
 					st.write(ratio, j)
-					if ratio > 70:
-						val = j
-					else:
-						val = 0
+					pg_finder[ratio] = j
+					all_ratio.append(ratio)
+
+				max_ratio = max(all_ratio)
+				val = pg_finder[max_ratio]
+
 # 			contract_check = re.sub(r'\n\s*\n', '', contract)
 # 			contract_check = re.sub(' +', ' ', contract_check)
 # 			cleaned_p = re.sub(' +', ' ', predictions[p])
