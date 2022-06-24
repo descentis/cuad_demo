@@ -225,7 +225,7 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 				for j in range(0, len(contract), len(predictions[p])):
 					matcher = contract[j:j+len(predictions[p])]
 					ratio = fuzz.ratio(matcher, predictions[p])
-					st.write(ratio)
+					st.write(ratio, j)
 					if ratio > 70:
 						val = j
 					else:
