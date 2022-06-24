@@ -221,10 +221,12 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 # 			answer = '\n'.join(final)
 			page = -1
 			for j in range(0, len(contract), len(predictions[p])):
-			       matcher = contract[i:i+len(predictions[p])]
+			       matcher = contract[j:j+len(predictions[p])]
 			       ratio = fuzz.ratio(matcher, predictions[p])
 			       if ratio > 80:
-			       		val = i
+			       		val = j
+				else:
+					val = 0
 # 			contract_check = re.sub(r'\n\s*\n', '', contract)
 # 			contract_check = re.sub(' +', ' ', contract_check)
 # 			cleaned_p = re.sub(' +', ' ', predictions[p])
