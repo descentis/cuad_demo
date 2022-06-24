@@ -139,7 +139,7 @@ if uploaded_file is not None:
 	
 		
 with st.expander("Expand the contract document"):
- 	st.write(contract)
+ 	st.write(contract.replace('\n', ''))
 #contract = contracts[0]
 
 st.header("Contract Review (Beta)")
