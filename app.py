@@ -236,12 +236,13 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 				val = pg_finder[max_ratio]
 				k = val
 				#st.write(contract[val:val+5])
-				if contract[val-1] != '.':
+				if contract[val-1] != '.' and contract[val] != '.':
 					while True:
 						if contract[k] == '.':
 							break
 						else:
 							k -= 1
+					k += 1
 				e = val + len(predictions[p])
 				if contract[val+len(predictions[p])] != '.' and contract[val+len(predictions[p])+1] != '.':
 					while True:
