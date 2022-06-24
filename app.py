@@ -11,6 +11,7 @@ import json
 from random import randint
 import multiprocessing
 import re
+from fuzzywuzzy import fuzz
 
 st.set_page_config(layout="wide")
 
@@ -130,7 +131,7 @@ if uploaded_file is not None:
 		for i in range(pdfReader.numPages):
 			pageObj = pdfReader.getPage(i)
 			contract += pageObj.extractText()
-			page_num[len(re.sub(r'\n\s*\n', '', contract))] = i+1
+			page_num[len(contract)] = i+1
 			#page_num[len(contract.replace('\n', ''))] = i+1
 		#st.write(contract)
 		page_num = dict(sorted(page_num.items()))
@@ -219,10 +220,15 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 			
 # 			answer = '\n'.join(final)
 			page = -1
-			contract_check = re.sub(r'\n\s*\n', '', contract)
-			contract_check = re.sub(' +', ' ', contract_check)
-			cleaned_p = re.sub(' +', ' ', predictions[p])
-			val = contract_check.find(cleaned_p)
+			for j in range(0, len(contract), len(predictions[p]):
+				       matcher = contract[i:i+len(predictions[p])]
+				       ratio = fuzz.ratio(matcher, predictions[p])
+				       if ratio > 80:
+				       		val = i
+# 			contract_check = re.sub(r'\n\s*\n', '', contract)
+# 			contract_check = re.sub(' +', ' ', contract_check)
+# 			cleaned_p = re.sub(' +', ' ', predictions[p])
+# 			val = contract_check.find(cleaned_p)
 			st.write(val)
 			for key, v in page_num.items():
 				if val <= key:
