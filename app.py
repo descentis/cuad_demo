@@ -221,6 +221,7 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 # 			answer = '\n'.join(final)
 			page = -1
 			val = -1
+			final_pred = ''
 			if len(predictions[p]) != 0:
 				pg_finder = {}
 				all_ratio = []
@@ -233,6 +234,21 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 
 				max_ratio = max(all_ratio)
 				val = pg_finder[max_ratio]
+				if contract[val].islower() and contract[val-2] != '.':
+					k = val
+					while True:
+						if contract[k] == '.':
+							break
+						else:
+							k -= 1
+				if contract[val+len(predictions[p])] != '.' and contract[val+len(predictions[p])+1] != '.':
+					e = val+len(predictions[p])
+					while True:
+						if contract[e] == '.':
+							break
+						e += 1
+
+				final_pred = contract[k:e+1]
 
 # 			contract_check = re.sub(r'\n\s*\n', '', contract)
 # 			contract_check = re.sub(' +', ' ', contract_check)
@@ -246,7 +262,7 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 					
 			#st.write(answer)
 			if len(predictions[p]) != 0:
-				st.write(str(i+1)+".\t"+f"Question: {question_set[int(p)]}\n\n\tAnswer: {predictions[p]}"+" (page number: "+str(page)+") \n\n")
+				st.write(str(i+1)+".\t"+f"Question: {question_set[int(p)]}\n\n\tAnswer: {final_pred}"+" (page number: "+str(page)+") \n\n")
 			else:
 				st.write(
 					str(i + 1) + ".\t" + f"Question: {question_set[int(p)]}\n\n\tAnswer: Couldn't find the answer\n\n")
