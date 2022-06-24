@@ -244,7 +244,7 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 				if contract[val+len(predictions[p])] != '.' and contract[val+len(predictions[p])+1] != '.':
 					e = val+len(predictions[p])
 					while True:
-						if contract[e] == '.':
+						if contract[e] == '\n' and contract[e+1] == '\n':
 							break
 						e += 1
 
