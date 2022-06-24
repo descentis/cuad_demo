@@ -50,9 +50,9 @@ st.markdown(f'''
 	
 @st.cache(allow_output_mutation=True)
 def load_model():
-    model = AutoModelForQuestionAnswering.from_pretrained(model_checkpoint)
-    tokenizer = AutoTokenizer.from_pretrained(model_checkpoint , use_fast=False)
-    return model, tokenizer
+	model = AutoModelForQuestionAnswering.from_pretrained(model_checkpoint)
+	tokenizer = AutoTokenizer.from_pretrained(model_checkpoint , use_fast=False)
+	return model, tokenizer
 
 @st.cache(allow_output_mutation=True)
 def load_questions():
@@ -107,8 +107,8 @@ if 'key' not in st.session_state:
 	st.session_state.key = str(randint(1000, 100000000))
 
 def clear_multi():
-    st.session_state.multiselect = []
-    return
+	st.session_state.multiselect = []
+	return
 
 model, tokenizer = load_model()
 questions = load_questions()
@@ -141,7 +141,7 @@ if uploaded_file is not None:
 	
 		
 with st.expander("Expand the contract document"):
- 	st.write(contract)
+	st.write(contract)
 #contract = contracts[0]
 
 st.header("Contract Review (Beta)")
@@ -163,14 +163,14 @@ selected_questions = st.multiselect('Select clause type(s) to search and review 
 col1, col2, col3 = st.columns([0.6,1,8])
 
 with col1:
-   Run_Button = st.button('Run', key=None)
+	Run_Button = st.button('Run', key=None)
 with col2:
-    Stop_button = st.button("Stop")
+	Stop_button = st.button("Stop")
 with col3:
-    reset_button = st.button("Reset", on_click=clear_multi)
+	reset_button = st.button("Reset", on_click=clear_multi)
 if reset_button and 'key' in st.session_state.keys():
-    st.session_state.pop('key')
-    st.experimental_rerun()
+	st.session_state.pop('key')
+	st.experimental_rerun()
 
 if 'boolean' not in st.session_state:
 	st.session_state.boolean = False
@@ -221,11 +221,11 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 # 			answer = '\n'.join(final)
 			page = -1
 			for j in range(0, len(contract), len(predictions[p])):
-			       matcher = contract[j:j+len(predictions[p])]
-			       ratio = fuzz.ratio(matcher, predictions[p])
-			       if ratio > 80:
-			       		val = j
-			       else:
+				matcher = contract[j:j+len(predictions[p])]
+				ratio = fuzz.ratio(matcher, predictions[p])
+				if ratio > 80:
+					val = j
+				else:
 					val = 0
 # 			contract_check = re.sub(r'\n\s*\n', '', contract)
 # 			contract_check = re.sub(' +', ' ', contract_check)
