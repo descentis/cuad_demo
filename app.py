@@ -234,7 +234,7 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 
 				max_ratio = max(all_ratio)
 				val = pg_finder[max_ratio]
-				if contract[val].islower() and contract[val-2] != '.':
+				if contract[val].islower() and contract[val-1] != '\n' and contract[val-2] != '.':
 					k = val
 					while True:
 						if contract[k] == '.':
