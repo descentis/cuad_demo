@@ -265,7 +265,7 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 					
 			#st.write(answer)
 			if len(predictions[p]) != 0:
-				st.write(str(i+1)+".\t"+f"Question: {question_set[int(p)]}\n\n\tAnswer: {final_pred}"+" (page number: "+str(page)+") \n\n")
+				st.write(str(i+1)+".\t"+f"Question: {question_set[int(p)]}\n\n\tAnswer: {predictions[p]}"+" (page number: "+str(page)+") \n\n")
 			else:
 				st.write(
 					str(i + 1) + ".\t" + f"Question: {question_set[int(p)]}\n\n\tAnswer: Couldn't find the answer\n\n")
