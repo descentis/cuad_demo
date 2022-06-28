@@ -200,7 +200,8 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 					try:
 						indexed_pred[ques]
 						ans = indexed_pred[ques].replace('\\n', ' ')
-						ans = unidecode.unidecode(ans)
+						ans = ans.replace("\xe2\x80\x99", "'")
+						#ans = unidecode.unidecode(ans)
 						st.write(str(i+1)+".\t"+f"Question: {ques}\n\n\tAnswer: {ans}"+"\n\n ")
 					except:
 						st.write(str(i + 1) + ".\t" + f"Question: {ques}\n\n\tAnswer: Couldn't find the answer\n\n")
