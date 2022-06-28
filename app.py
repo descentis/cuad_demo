@@ -194,8 +194,14 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 			if indexed_data.get(uploaded_file.name) is not None:
 				indexed_flag = 1
 				indexed_pred = indexed_data[uploaded_file.name]
+				i = 0
 				for ques in question_set:
-					st.write(str(i+1)+".\t"+f"Question: {ques}\n\n\tAnswer: {indexed_pred[ques]}"+"\n\n ")
+					try:
+						st.write(str(i+1)+".\t"+f"Question: {ques}\n\n\tAnswer: {indexed_pred[ques]}"+"\n\n ")
+					except:
+						str(i + 1) + ".\t" + f"Question: {question_set[int(p)]}\n\n\tAnswer: Couldn't find the answer\n\n")
+					i += 1
+					
 			
 			else:
 				try:
