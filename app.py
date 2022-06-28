@@ -13,6 +13,7 @@ import multiprocessing
 import re
 from fuzzywuzzy import fuzz
 import pandas as pd
+import unidecode
 
 st.set_page_config(layout="wide")
 
@@ -197,7 +198,9 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 				i = 0
 				for ques in question_set:
 					try:
-						ans = indexed_pred[ques].replace('\\n', '\n\t')
+						indexed_pred[ques]
+						ans = indexed_pred[ques].replace('\\n', ' ')
+						ans = unidecode.unidecode(ans)
 						st.write(str(i+1)+".\t"+f"Question: {ques}\n\n\tAnswer: {ans}"+"\n\n ")
 					except:
 						st.write(str(i + 1) + ".\t" + f"Question: {ques}\n\n\tAnswer: Couldn't find the answer\n\n")
