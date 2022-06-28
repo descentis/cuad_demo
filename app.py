@@ -159,6 +159,7 @@ def display_func(option):
 	
 
 #selected_question = st.selectbox('Choose one of the 41 queries from the CUAD dataset:', questions)
+selected_questions = []
 selected_questions = st.multiselect('Select clause type(s) to search and review (can make multiple selections):', questions, format_func=display_func, key="multiselect")
 #question_set = [questions[0], selected_question]
 
@@ -187,7 +188,7 @@ if Stop_button:
 indexed_data = pd.read_pickle("index.pickle")
 
 indexed_falg = 0
-if Run_Button == True and not len(contract)==0 and st.session_state.boolean == False:
+if Run_Button == True and not len(contract)==0 and st.session_state.boolean == False and len(selected_questions) != 0:
 #	for question in selected_questions:
 	question_set = selected_questions
 	with st.spinner('Running predictions...'):
