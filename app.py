@@ -12,6 +12,7 @@ from random import randint
 import multiprocessing
 import re
 from fuzzywuzzy import fuzz
+import pandas as pd
 
 st.set_page_config(layout="wide")
 
@@ -139,9 +140,11 @@ if uploaded_file is not None:
 	else:
 		print("not a right format")
 	
-		
-with st.expander("Expand the contract document"):
-	st.write(contract)
+try:		
+	with st.expander("Expand the contract document"):
+		st.write(contract)
+except:
+	st.write("oops! looks like there is some issue while showing the contract!\n Don't worry the prediction will still work")
 #contract = contracts[0]
 
 st.header("Contract Review (Beta)")
@@ -179,28 +182,39 @@ if Stop_button:
 
 #st.write(st.session_state['boolean'])
 #st.write(st.session_state['selected'])
+
+indexed_data = pd.read_pickle("indexed_data.pickle")
+
+indexed_falg = 0
 if Run_Button == True and not len(contract)==0 and st.session_state.boolean == False:
 #	for question in selected_questions:
 	question_set = selected_questions
 	with st.spinner('Running predictions...'):
 		if st.session_state.boolean == False:
-			try:
-				data = {'question':question_set, 'contract': contract}
-				res = requests.post(f"https://a565-34-150-211-191.ngrok.io/predict", json=data)
-				data = res.json()
-				for key,val in data.items():
-					st.write(key)
-					st.write(data['detail'])
-				predictions = data['prediction']
-			except:
+			if indexed_data.get(uploaded_file.name) is not None:
+				indexed_flag = 1
+				indexed_pred = indexed_data[uploaded_file.name]
+				for ques in question_set:
+					st.write(str(i+1)+".\t"+f"Question: {ques}\n\n\tAnswer: {indexed_pred[ques]}"+"\n\n ")
+			
+			else:
+				try:
+					data = {'question':question_set, 'contract': contract}
+					res = requests.post(f"https://a565-34-150-211-191.ngrok.io/predict", json=data)
+					data = res.json()
+					for key,val in data.items():
+						st.write(key)
+						st.write(data['detail'])
+					predictions = data['prediction']
+				except:
 
-# 				for key,val in data.items():
-# 					st.write(key)
-				predictions = run_prediction(question_set, contract, model, tokenizer)
+	# 				for key,val in data.items():
+	# 					st.write(key)
+					predictions = run_prediction(question_set, contract, model, tokenizer)
 		else:
 			st.write("Stopping the function")
 			predictions = ""
-	if type(predictions) != str:
+	if type(predictions) != str and indexed_flag == 0:
 		for i, p in enumerate(predictions):
 			#if i != 0: st.write(f"Question: {question_set[int(p)]}\n\nAnswer: {predictions[p]}\n\n")
 # 			answer = predictions[p].split(' ')
