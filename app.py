@@ -184,7 +184,7 @@ if Stop_button:
 #st.write(st.session_state['boolean'])
 #st.write(st.session_state['selected'])
 
-indexed_data = pd.read_pickle("indexed_data.pickle")
+indexed_data = pd.read_pickle("index.pickle")
 
 indexed_falg = 0
 if Run_Button == True and not len(contract)==0 and st.session_state.boolean == False:
