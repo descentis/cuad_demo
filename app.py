@@ -197,7 +197,7 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 				i = 0
 				for ques in question_set:
 					try:
-						st.write(str(i+1)+".\t"+f"Question: {ques}\n\n\tAnswer: {indexed_pred[ques]}"+"\n\n ")
+						st.write(str(i+1)+".\t"+f"Question: {ques}\n\n\tAnswer: {str(indexed_pred[ques])}"+"\n\n ")
 					except:
 						st.write(str(i + 1) + ".\t" + f"Question: {ques}\n\n\tAnswer: Couldn't find the answer\n\n")
 					i += 1
