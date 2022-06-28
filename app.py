@@ -199,7 +199,7 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 					try:
 						st.write(str(i+1)+".\t"+f"Question: {ques}\n\n\tAnswer: {indexed_pred[ques]}"+"\n\n ")
 					except:
-						str((i + 1) + ".\t" + f"Question: {question_set[int(p)]}\n\n\tAnswer: Couldn't find the answer\n\n")
+						st.write(str(i + 1) + ".\t" + f"Question: {ques}\n\n\tAnswer: Couldn't find the answer\n\n")
 					i += 1
 					
 			
@@ -288,8 +288,7 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 				if len(predictions[p]) != 0:
 					st.write(str(i+1)+".\t"+f"Question: {question_set[int(p)]}\n\n\tAnswer: {predictions[p]}"+" (page number: "+str(page)+") \n\n ")
 				else:
-					st.write(
-						str(i + 1) + ".\t" + f"Question: {question_set[int(p)]}\n\n\tAnswer: Couldn't find the answer\n\n")
+					st.write(str(i + 1) + ".\t" + f"Question: {question_set[int(p)]}\n\n\tAnswer: Couldn't find the answer\n\n")
 
 if st.session_state.boolean == True:
 	st.write("Prediction Stopped")
