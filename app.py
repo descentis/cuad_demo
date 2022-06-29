@@ -186,6 +186,7 @@ if Stop_button:
 #st.write(st.session_state['selected'])
 
 indexed_data = pd.read_pickle("index.pickle")
+page_index = pd.read_pickle("page_index.pickle")
 
 indexed_falg = 0
 if Run_Button == True and not len(contract)==0 and st.session_state.boolean == False and len(selected_questions) != 0:
@@ -196,6 +197,7 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 			if indexed_data.get(uploaded_file.name) is not None:
 				indexed_flag = 1
 				indexed_pred = indexed_data[uploaded_file.name]
+				indexed_page = page_index[uploaded_file.name]
 				i = 0
 				for ques in question_set:
 					try:
@@ -203,8 +205,9 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 						ans = ans.replace("\xe2\x80\x99", "'")
 						ans = ans.replace("\xc2\xa0", " ").replace("\xe2\x80\x9d", " ").replace(" \xe2\x80\x9c", " ")
 						ans = unidecode.unidecode(ans)
+						page = indexed_page[ques]
 						if len(ans) != 0:
-							st.write(str(i+1)+".\t"+f"Question: {ques}\n\n\tAnswer: {ans}"+"\n\n ")
+							st.write(str(i+1)+".\t"+f"Question: {ques}\n\n\tAnswer: {ans}"+" (page number: "+str(page)+")\n\n ")
 						else:
 							st.write(str(i + 1) + ".\t" + f"Question: {ques}\n\n\tAnswer: Couldn't find the answer\n\n")
 					except:
