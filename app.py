@@ -203,7 +203,10 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 						ans = ans.replace("\xe2\x80\x99", "'")
 						ans = ans.replace("\xc2\xa0", " ").replace("\xe2\x80\x9d", " ").replace(" \xe2\x80\x9c", " ")
 						ans = unidecode.unidecode(ans)
-						st.write(str(i+1)+".\t"+f"Question: {ques}\n\n\tAnswer: {ans}"+"\n\n ")
+						if len(ans) != 0:
+							st.write(str(i+1)+".\t"+f"Question: {ques}\n\n\tAnswer: {ans}"+"\n\n ")
+						else:
+							st.write(str(i + 1) + ".\t" + f"Question: {ques}\n\n\tAnswer: Couldn't find the answer\n\n")
 					except:
 						st.write(str(i + 1) + ".\t" + f"Question: {ques}\n\n\tAnswer: Couldn't find the answer\n\n")
 					i += 1
