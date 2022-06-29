@@ -201,7 +201,7 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 					try:
 						ans = indexed_pred[ques].replace('\\n', ' ')
 						ans = ans.replace("\xe2\x80\x99", "'")
-						ans = ans.replace("\xc2\xa0", " ")
+						ans = ans.replace("\xc2\xa0", " ").replace("\xe2\x80\x9d", " ")
 						ans = unidecode.unidecode(ans)
 						st.write(str(i+1)+".\t"+f"Question: {ques}\n\n\tAnswer: {ans}"+"\n\n ")
 					except:
