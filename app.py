@@ -207,7 +207,7 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 						ans = ans.replace("\\xe2\\x80\\x99", "'")
 						ans = ans.replace("\\xc2\\xa0", " ")
 						ans = ans.replace("\\xe2\\x80\\x9d", " ")
-						ans = ans.replace("\\xe2\\x80\\x9c", " ")
+						ans = ans.replace("\\xe2\\x80\\x9c", " ").replace("\\xcd\\xbe", " ")
 						if "Document Name" in ques:
 							page = 1
 						else:
