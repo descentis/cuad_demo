@@ -202,7 +202,7 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 				for ques in question_set:
 					try:
 								
-						ans = indexed_pred[ques].replace('\\n', ' ')
+						ans = str(indexed_pred[ques].replace('\\n', ' '))
 						ans = unidecode.unidecode(ans)
 						ans = ans.replace("\xe2\x80\x99", "'")
 						ans = ans.replace("\xc2\xa0", " ")
