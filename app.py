@@ -185,7 +185,11 @@ if Stop_button:
 #st.write(st.session_state['boolean'])
 #st.write(st.session_state['selected'])
 
-indexed_data = pd.read_pickle("index.pickle")
+# large-v2 indexed data
+#indexed_data = pd.read_pickle("index.pickle")
+
+# base mode indexing
+indexed_data = pd.read_pickle("indexed_data9.pickle")
 page_index = pd.read_pickle("page_index.pickle")
 
 indexed_falg = 0
@@ -202,19 +206,19 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 				for ques in question_set:
 					try:
 								
-						ans = str(indexed_pred[ques].replace('\\n', ' '))
-						ans = unidecode.unidecode(ans)
-						ans = ans.replace("\\xe2\\x80\\x99", "'")
-						ans = ans.replace("\\xc2\\xa0", " ")
-						ans = ans.replace("\\xe2\\x80\\x9d", " ")
-						ans = ans.replace("\\xe2\\x80\\x9c", " ").replace("\\xcd\\xbe", " ")
+						ans = str(indexed_pred[ques])
+# 						ans = unidecode.unidecode(ans)
+# 						ans = ans.replace("\\xe2\\x80\\x99", "'")
+# 						ans = ans.replace("\\xc2\\xa0", " ")
+# 						ans = ans.replace("\\xe2\\x80\\x9d", " ")
+# 						ans = ans.replace("\\xe2\\x80\\x9c", " ").replace("\\xcd\\xbe", " ")
 						if "Document Name" in ques:
 							page = 1
 						else:
 							page = indexed_page[ques]
-						if 'AimmuneTherapeuticsInc' in uploaded_file.name:
-							if 'Document Name' in ques:
-								ans = ' '.join(ans.split(' ')[1:])
+# 						if 'AimmuneTherapeuticsInc' in uploaded_file.name:
+# 							if 'Document Name' in ques:
+# 								ans = ' '.join(ans.split(' ')[1:])
 						if len(ans) != 0:
 							st.write(str(i+1)+".\t"+f"Question: {ques}\n\n\tAnswer: {ans}"+" (page number: "+str(page)+")\n\n ")
 						else:
