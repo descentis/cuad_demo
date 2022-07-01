@@ -201,6 +201,7 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 				i = 0
 				for ques in question_set:
 					try:
+								
 						ans = indexed_pred[ques].replace('\\n', ' ')
 						ans = ans.replace("\xe2\x80\x99", "'")
 						ans = ans.replace("\xc2\xa0", " ").replace("\xe2\x80\x9d", " ").replace(" \xe2\x80\x9c", " ")
@@ -209,6 +210,9 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 							page = 1
 						else:
 							page = indexed_page[ques]
+						if 'AimmuneTherapeuticsInc' in uploaded_file.name:
+							if 'Document Name' in ques:
+								ans = ' '.join(ans.split(' ')[1:])
 						if len(ans) != 0:
 							st.write(str(i+1)+".\t"+f"Question: {ques}\n\n\tAnswer: {ans}"+" (page number: "+str(page)+")\n\n ")
 						else:
