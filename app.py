@@ -203,9 +203,11 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 					try:
 								
 						ans = indexed_pred[ques].replace('\\n', ' ')
-						ans = ans.replace("\xe2\x80\x99", "'")
-						ans = ans.replace("\xc2\xa0", " ").replace("\xe2\x80\x9d", " ").replace(" \xe2\x80\x9c", " ")
 						ans = unidecode.unidecode(ans)
+						ans = ans.replace("\xe2\x80\x99", "'")
+						ans = ans.replace("\xc2\xa0", " ")
+						ans = ans.replace("\xe2\x80\x9d", " ")
+						ans = ans.replace(" \xe2\x80\x9c", " ")
 						if "Document Name" in ques:
 							page = 1
 						else:
