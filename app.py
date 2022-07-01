@@ -190,7 +190,7 @@ if Stop_button:
 
 # base mode indexing
 indexed_data = pd.read_pickle("indexed_data9.pickle")
-page_index = pd.read_pickle("page_index.pickle")
+page_index = pd.read_pickle("all_pages.pickle")
 
 indexed_falg = 0
 if Run_Button == True and not len(contract)==0 and st.session_state.boolean == False and len(selected_questions) != 0:
