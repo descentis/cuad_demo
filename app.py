@@ -207,8 +207,8 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 					try:
 								
 						ans = str(indexed_pred[ques])
-						ans = ans.replace("\xa0 ", " ")
-# 						ans = unidecode.unidecode(ans)
+						#ans = ans.replace("\xa0 ", " ")
+ 						ans = unidecode.unidecode(ans)
 # 						ans = ans.replace("\\xe2\\x80\\x99", "'")
 # 						ans = ans.replace("\\xc2\\xa0", " ")
 # 						ans = ans.replace("\\xe2\\x80\\x9d", " ")
